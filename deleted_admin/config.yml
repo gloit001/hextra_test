@@ -1,0 +1,62 @@
+backend:
+  name: github
+  repo: namki/hextra_test  # 실제 GitHub 저장소로 변경해주세요
+  branch: main
+  auth_type: pkce
+
+# 로컬 백엔드 (개발용)
+local_backend: true
+
+media_folder: "exampleSite/static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # 블로그 포스트 (단순 버전)
+  - name: "blog"
+    label: "블로그 포스트"
+    folder: "exampleSite/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "날짜", name: "date", widget: "datetime", default: "{{now}}"}
+      - {label: "설명", name: "description", widget: "text", required: false}
+      - {label: "태그", name: "tags", widget: "list", required: false}
+      - {label: "썸네일", name: "image", widget: "image", required: false}
+      - {label: "드래프트", name: "draft", widget: "boolean", default: false}
+      - {label: "내용", name: "body", widget: "markdown"}
+
+  # 문서 (단순 버전)
+  - name: "docs"
+    label: "문서"
+    folder: "exampleSite/content/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "날짜", name: "date", widget: "datetime", default: "{{now}}", required: false}
+      - {label: "무게", name: "weight", widget: "number", default: 1, required: false}
+      - {label: "내용", name: "body", widget: "markdown"}
+
+  # 페이지
+  - name: "pages"
+    label: "페이지"
+    files:
+      - label: "About 페이지"
+        name: "about"
+        file: "exampleSite/content/about/index.md"
+        fields:
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "내용", name: "body", widget: "markdown"}
+
+  # 사이트 설정 (기본만)
+  - name: "settings"
+    label: "사이트 설정"
+    files:
+      - label: "기본 설정"
+        name: "config"
+        file: "exampleSite/hugo.yaml"
+        fields:
+          - {label: "사이트 제목", name: "title", widget: "string"}
+          - {label: "베이스 URL", name: "baseURL", widget: "string"}
+          - {label: "기본 언어", name: "defaultContentLanguage", widget: "select", options: ["en", "ko", "ja"], default: "en"}
