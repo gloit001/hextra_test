@@ -6,30 +6,13 @@ backend:
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
-# GitHub OAuth 설정
-site_url: http://localhost:1313
-display_url: http://localhost:1313
-
 collections:
   - name: "blog"
     label: "Blog Posts"
     folder: "content/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "string"}
-      - {label: "Draft", name: "draft", widget: "boolean", default: false}
-      - {label: "Body", name: "body", widget: "markdown"}
-
-  - name: "docs"
-    label: "Documentation"
-    folder: "content/docs"
-    create: true
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Weight", name: "weight", widget: "number", required: false}
-      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Date", name: "date", widget: "datetime", required: false}
       - {label: "Body", name: "body", widget: "markdown"}

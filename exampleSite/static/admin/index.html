@@ -7,37 +7,6 @@
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-  
-  <!-- GitHub OAuth 설정 -->
-  <script>
-    window.CMS_MANUAL_INIT = true;
-    
-    window.addEventListener('DOMContentLoaded', function() {
-      window.CMS.init({
-        config: {
-          backend: {
-            name: 'github',
-            repo: 'gloit001/hextra_test',
-            branch: 'main',
-            auth_endpoint: 'https://api.netlify.com/api/v1/oauth/github',
-            client_id: 'Ov23liHVowQxyDKO6CwX'
-          }
-        }
-      });
-    });
-  </script>
+  <script src="https://unpkg.com/decap-cms@3.1.10/dist/decap-cms.js"></script>
 </body>
 </html>
