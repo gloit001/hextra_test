@@ -2,17 +2,27 @@ backend:
   name: github
   repo: gloit001/hextra_test
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
-media_folder: "static/images/uploads"
+# GitHub에서 exampleSite 폴더 기준으로 설정
+media_folder: "exampleSite/static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "content/blog"
+    folder: "exampleSite/content/blog"
     create: true
-    slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime", required: false}
+      - {label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "docs"
+    label: "Documentation"
+    folder: "exampleSite/content/docs"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
